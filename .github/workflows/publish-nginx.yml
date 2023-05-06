@@ -21,7 +21,7 @@ jobs:
     
     - name: Build frontend
       uses: actions/setup-node@v3
-    - run: scripts/nginx/app
+    - run: cd scripts/nginx/app
     - run: npm ci
     - run: npm run build
     
