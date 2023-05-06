@@ -12,6 +12,18 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      
+    - name: Checkout frontend
+      uses: actions/checkout@v3
+      with:
+        repository: dently-ai/dentlyai-frontend
+        path: scripts/nginx/app
+    
+    - name: Build frontend
+      uses: actions/setup-node@v3
+    - run: scripts/nginx/app
+    - run: npm ci
+    - run: npm run build
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
@@ -25,6 +37,6 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        cd scripts/nginx
+        cd ..
         docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/nginx:test
         docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/nginx:test
