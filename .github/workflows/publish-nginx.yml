@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
           node-version: 18
-    - run: cd scripts/nginx/app && npm ci && npm run build
+    - run: cd scripts/nginx/app && npm install && npm run build
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
