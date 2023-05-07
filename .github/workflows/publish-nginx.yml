@@ -19,6 +19,12 @@ jobs:
         repository: dently-ai/dentlyai-frontend
         path: scripts/nginx/app
     
+    - name: Build frontend
+      uses: actions/setup-node@v3
+      with:
+          node-version: 18
+    - run: cd scripts/nginx/app && npm install && CI=false npm run build
+    
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
