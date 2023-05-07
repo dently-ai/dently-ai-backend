@@ -21,9 +21,9 @@ jobs:
     
     - name: Build frontend
       uses: actions/setup-node@v3
-    - run: cd scripts/nginx/app
-    - run: npm ci
-    - run: npm run build --if-present
+      with:
+          node-version: 18
+    - run: cd scripts/nginx/app && npm install && CI=false npm run build
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
