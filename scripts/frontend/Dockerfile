@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY app .
 
-RUN npm ci 
-RUN npm run build
+RUN npm install
+RUN CI=false npm run build
 
 ENV NODE_ENV production
 EXPOSE 3000
