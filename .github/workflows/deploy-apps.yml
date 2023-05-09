@@ -1,1 +1,20 @@
-runs-on: self-hosted
+
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - name: 'Checkout repository'
+    - run: |
+        run.sh
+        runBE.sh
