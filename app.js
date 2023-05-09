@@ -91,8 +91,7 @@ async function initApp() {
   app.use('/uploads', express.static(path.join(__dirname, 'routes', 'upload')));
   app.use(express.static(path.join(__dirname, 'public')));
 
-  app.use('/api', apiRouter);
-  app.use('/reports', reportRouter(serviceRepository));
+  app.use('api/reports', reportRouter(serviceRepository));
 
   return app;
 }
