@@ -17,23 +17,18 @@ jobs:
       uses: actions/checkout@v3
       with:
         repository: dently-ai/dentlyai-frontend
-        path: scripts/frontend/app
+        path: scripts/nginx/app
+    
+    - name: Build frontend
+      uses: actions/setup-node@v3
+      with:
+          node-version: 18
+    - run: cd scripts/nginx/app && npm install && CI=false npm run build
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: 'Build and push FRONTEND image'
-      uses: azure/docker-login@v1
-      with:
-        login-server: ${{ secrets.REGISTRY_LOGIN_SERVER }}
-        username: ${{ secrets.REGISTRY_USERNAME }}
-        password: ${{ secrets.REGISTRY_PASSWORD }}
-    - run: |
-        cd scripts/frontend
-        docker build . -t ${{ secrets.REGISTRY_LOGIN_SERVER }}/frontend:test
-        docker push ${{ secrets.REGISTRY_LOGIN_SERVER }}/frontend:test
     
     - name: 'Build and push NGINX image'
       uses: azure/docker-login@v1
