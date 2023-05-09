@@ -1,1 +1,16 @@
-runs-on: self-hosted
+
+name: Deploy APPS
+
+on:
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: self-hosted
+
+    steps:
+    - name: 'Checkout repository'
+      run: |
+        run.sh
+        runBE.sh
