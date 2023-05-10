@@ -1,5 +1,5 @@
 
-name: Deploy APPS
+name: Deploy Applications on TEST
 
 on:
   workflow_dispatch:
