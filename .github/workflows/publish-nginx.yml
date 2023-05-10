@@ -1,4 +1,4 @@
-name: Publish Nginx
+name: Build Frontend/Nginx
 
 on:
   workflow_dispatch:
