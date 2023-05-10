@@ -12,5 +12,5 @@ jobs:
     steps:
     - name: 'Checkout repository'
       run: |
-        run.sh
-        runBE.sh
+        /home/djodzo/run.sh
+        /home/djodzo/runBE.sh
